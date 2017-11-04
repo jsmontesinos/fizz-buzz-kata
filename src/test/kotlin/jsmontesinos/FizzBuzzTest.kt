@@ -53,9 +53,15 @@ class FizzBuzzTest : Spek({
 
 class FizzBuzz {
     fun  resolve(input: Int): String {
-        if ((input % 3 == 0) && (input % 5 == 0)) return "FizzBuzz"
-        else if (input % 3 == 0) return "Fizz"
-        else if (input % 5 == 0) return "Buzz"
+        val isDivisibleByThree = isDivisible(input, 3)
+        val isDivisibleByFive = isDivisible(input, 5)
+        var isDivisibleByThreeAndFive = isDivisibleByThree && isDivisibleByFive
+
+        if (isDivisibleByThreeAndFive) return "FizzBuzz"
+        else if (isDivisibleByThree) return "Fizz"
+        else if (isDivisibleByFive) return "Buzz"
         else return input.toString()
     }
+    
+    private fun isDivisible(input: Int, divisor: Int) = input % divisor == 0
 }
