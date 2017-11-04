@@ -7,35 +7,31 @@ import kotlin.test.assertEquals
 
 class FizzBuzzTest : Spek({
     describe("FizzBuzzResolver") {
-        it("should return 1 when input is 1") {
-            var fizzBuzz = FizzBuzz()
-
-            var result = fizzBuzz.resolve(1)
-
-            assertEquals("1", result)
-        }
-
-        it("should return Fizz when input is 3") {
-            var fizzBuzz = FizzBuzz()
-
-            var result = fizzBuzz.resolve(3)
-
-            assertEquals("Fizz", result)
-        }
-
-        it("should return Fizz when input is 6") {
-            var fizzBuzz = FizzBuzz()
-
-            var result = fizzBuzz.resolve(6)
-
-            assertEquals("Fizz", result)
-        }
-
-        listOf(5, 10, 20).forEach { buzz ->
-            it("should return Buzz when input is $buzz") {
+        listOf(1, 2, 4).forEach { input ->
+            it("should return the input when input is $input") {
                 var fizzBuzz = FizzBuzz()
 
-                var result = fizzBuzz.resolve(buzz)
+                var result = fizzBuzz.resolve(input)
+
+                assertEquals(input.toString(), result)
+            }
+        }
+
+        listOf(3, 6, 9).forEach { input ->
+            it("should return Fizz when input is $input") {
+                var fizzBuzz = FizzBuzz()
+
+                var result = fizzBuzz.resolve(input)
+
+                assertEquals("Fizz", result)
+            }
+        }
+
+        listOf(5, 10, 20).forEach { input ->
+            it("should return Buzz when input is $input") {
+                var fizzBuzz = FizzBuzz()
+
+                var result = fizzBuzz.resolve(input)
 
                 assertEquals("Buzz", result)
             }
