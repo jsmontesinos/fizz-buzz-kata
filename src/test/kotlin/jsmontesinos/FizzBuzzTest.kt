@@ -37,13 +37,24 @@ class FizzBuzzTest : Spek({
             }
         }
 
+        listOf(15, 30, 45).forEach { input ->
+            it("should return FizzBuzz when input is $input") {
+                var fizzBuzz = FizzBuzz()
+
+                var result = fizzBuzz.resolve(input)
+
+                assertEquals("FizzBuzz", result)
+            }
+        }
+
     }
 
 })
 
 class FizzBuzz {
     fun  resolve(input: Int): String {
-        if (input % 3 == 0) return "Fizz"
+        if ((input % 3 == 0) && (input % 5 == 0)) return "FizzBuzz"
+        else if (input % 3 == 0) return "Fizz"
         else if (input % 5 == 0) return "Buzz"
         else return input.toString()
     }
